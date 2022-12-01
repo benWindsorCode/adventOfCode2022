@@ -4,18 +4,13 @@ def main():
 
     elves = []
 
-    # This is an ugly solution
-    with open('./input.txt') as f:
-        lines = f.read()
-        
-        split = lines.split(2*os.linesep)
-        print(split)
+    # This is an ugly solution, its been a long day
+    with open('./test.txt') as f:
+        split = f.read().split(2*os.linesep)
 
         for set in split:
             values = set.split(os.linesep)
-            total = 0
-            for value in values:
-                total += int(value)
+            total = sum([int(value) for value in values])
 
             elves.append(total)
 
