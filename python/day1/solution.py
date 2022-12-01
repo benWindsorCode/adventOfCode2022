@@ -5,7 +5,7 @@ def main():
     elves = []
 
     # This is an ugly solution, its been a long day
-    with open('./test.txt') as f:
+    with open('./input.txt') as f:
         split = f.read().split(2*os.linesep)
 
         for set in split:
@@ -15,6 +15,10 @@ def main():
             elves.append(total)
 
     print(max(elves))
+
+    elves.sort()
+
+    print(elves[-1] + elves[-2] + elves[-3])
 
 if __name__ == "__main__":
     main()
