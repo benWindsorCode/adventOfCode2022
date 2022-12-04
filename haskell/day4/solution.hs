@@ -11,7 +11,9 @@ data Assignment = Assignment Int Int deriving (Show)
 data Pair = Pair Assignment Assignment deriving (Show)
 
 -- Count number of pairs of assignments of elves where one fully contains the other
+part1 :: [String] -> Int
 part1 lines = countTrue $ map (pairFullyContains . createPair) lines
+part2 :: [String] -> Int
 part2 lines = countTrue $ map (pairOverlaps . createPair) lines
 
 countTrue :: [Bool] -> Int

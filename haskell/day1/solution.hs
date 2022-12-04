@@ -14,4 +14,5 @@ calcCalories ("":xs) score scores = calcCalories xs 0 (score : scores)
 calcCalories (x:xs) score scores = calcCalories xs (score + (read x ::Integer)) scores
 calcCalories [] score scores = score : scores
 
+nthLargest :: Ord a => [a] -> Int -> a
 nthLargest xs n = (reverse $ sort xs) !! n

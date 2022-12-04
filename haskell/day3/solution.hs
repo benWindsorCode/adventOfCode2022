@@ -21,14 +21,17 @@ part2Inner (first:second:third:xs) score = part2Inner xs (score + getPriority co
 part2Inner [] score = score
 
 -- given three rucksacks find the common item
+commonItem :: [Char] -> String -> String -> Char
 commonItem (x:xs) second third 
     | isCharInBothStrings x second third = x
     | not $ isCharInBothStrings x second third = commonItem xs second third
 commonItem [] second thirs = error "rucksacks have no item in common"
 
 -- iterate over rucksack, each char in first half gets a score if its also in second half
+scoreRucksack :: String -> Int
 scoreRucksack rucksack = scoreRucksackInner (uniqueChars $ firstHalf rucksack) (uniqueChars $ secondHalf rucksack) 0
 
+scoreRucksackInner :: [Char] -> String -> Int -> Int
 scoreRucksackInner (x:xs) half score = scoreRucksackInner xs half (score + (scoreChar x half))
 scoreRucksackInner [] _ score = score
 
@@ -39,8 +42,10 @@ scoreChar char string
     | not $ isCharInString char string = 0
 
 -- return just a string of the unique chars in a string
+uniqueChars :: [Char] -> String
 uniqueChars string = uniqueCharsInner string ""
 
+uniqueCharsInner :: [Char] -> String -> String
 uniqueCharsInner (x:xs) chars 
     | isCharInString x chars = uniqueCharsInner xs chars
     | not $ isCharInString x chars = uniqueCharsInner xs (x:chars)
@@ -70,12 +75,14 @@ firstHalf input = slice start mid input
         mid = total `div` 2
         start = 0
 
+secondHalf :: [a] -> [a]
 secondHalf input = slice mid total input
     where
         total = length input
         mid = total `div` 2
         start = 0
 
+slice :: Int -> Int -> [a] -> [a]
 slice start end = take (end - start) . drop start
 
 -- Borrowed from here as couldnt work out the import https://hackage.haskell.org/package/strict-0.3.2/docs/Data-Strict-Maybe.html#v%3AfromJust
