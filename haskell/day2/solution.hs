@@ -3,7 +3,7 @@ import Debug.Trace
 -- Rock paper scissors
 main :: IO ()
 main = do
-    content <- readFile ("./input.txt")
+    content <- readFile "./input.txt"
     let contentLines = lines content
     let part1 = map processLinePart1 contentLines
     print $ sum part1

@@ -3,7 +3,7 @@ import Data.Char
 import Data.List
 
 main = do
-    content <- readFile ("./input.txt")
+    content <- readFile "./input.txt"
     let contentLines = lines content
     print $ part1 contentLines
     print $ part2 contentLines

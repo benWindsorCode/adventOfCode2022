@@ -2,7 +2,7 @@ import Data.List
 
 main :: IO ()
 main = do
-  content <- readFile ("./input.txt")
+  content <- readFile "./input.txt"
   let scores = calcCalories (lines content) 0 []
   print scores
   print $ maximum scores
