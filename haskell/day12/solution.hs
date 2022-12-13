@@ -1,4 +1,6 @@
 import Data.List (elemIndex)
+
+-- UNFINISHED
 main :: IO ()
 main = do
     content <- readFile "./test.txt"
